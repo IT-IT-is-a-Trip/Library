@@ -45,13 +45,14 @@ function displayBooks() {
         const cardButtons = document.createElement('div');
         const isReadButton = document.createElement('button');
         const removeButton = document.createElement('button');
-
+        
         const bookTitle = document.createElement('div');
         const bookAuthor = document.createElement('div');
         const bookPages = document.createElement('div');
         const bookIsRead = document.createElement('div');
 
-
+        
+        
         booksWrapper.appendChild(card);
         card.appendChild(bookInfo);
         bookInfo.appendChild(bookTitle);
@@ -65,6 +66,7 @@ function displayBooks() {
         bookAuthor.textContent = b.author;
         bookPages.textContent = b.pages;
         bookIsRead.textContent = b.isRead;
+        card.setAttribute('class', 'card')
     }
 }
 displayBooks()
@@ -73,6 +75,36 @@ addBookBtn.addEventListener('click', () => {
     dialogForm.showModal();
 })
 const closeButton = document.getElementById('close-button');
-closeButton.addEventListener('click', () => {
+const bookForm = document.getElementById('book-form');
+const submitButton = document.getElementById('submit-button');
+submitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(bookForm)
+    const newBook = {};
+    formData.forEach((value, key) => {
+        newBook[key] = value;
+    });
+    const isReadCheckbox = document.getElementById('isRead');
+    newBook.isRead = isReadCheckbox.checked;
+
+    const bookToAdd = new Book(newBook.title, newBook.author, newBook.pages, newBook.isRead);
+    library.push(bookToAdd);
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card) => card.remove());
+    displayBooks();
+    bookForm.reset();
     dialogForm.close();
 })
+
+//form close button 
+const formCloseButton = document.getElementById('close-button');
+formCloseButton.addEventListener('click', () => {
+    dialogForm.close();
+    bookForm.reset();
+});
+
+//book is read button 
+
+
