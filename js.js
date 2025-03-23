@@ -66,9 +66,21 @@ function displayBooks() {
         bookAuthor.textContent = b.author;
         bookPages.textContent = b.pages;
         bookIsRead.textContent = b.isRead;
-        card.setAttribute('class', 'card')
+        card.setAttribute('class', 'card');
+        b.id = crypto.randomUUID();
+        card.setAttribute('data-id', b.id);
+        removeButton.textContent = 'remove'
+        removeButton.addEventListener('click', () => {
+            library.splice(library.findIndex(book => book.id === b.id), 1);
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card) => {
+                card.remove();
+            })
+            displayBooks();
+        })
     }
 }
+
 displayBooks()
 const dialogForm = document.getElementById('dialogForm');
 addBookBtn.addEventListener('click', () => {
@@ -106,5 +118,4 @@ formCloseButton.addEventListener('click', () => {
 });
 
 //book is read button 
-
 
