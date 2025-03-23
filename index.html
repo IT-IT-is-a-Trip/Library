@@ -11,5 +11,22 @@
     <header id="header">Library</header>
     <div><button id="add-book-btn">Add book</button></div>
     <div id="books-wrapper"></div>
+    <dialog id="dialogForm">
+        <form method="dialog">
+            <section>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="author">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
+                <label for="pages">Pages:</label>
+                <input type="text" id="pages" name="pages">
+            </section>
+            <p class="is-read-panel">
+                <label for="is-read">Is read?</label>
+                <input type="checkbox" id="is-read" name="is-read">
+                <button id="close-button" type="button">Close</button>
+            </p>
+        </form>
+    </dialog>
 </body>
 </html>

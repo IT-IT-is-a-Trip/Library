@@ -2,7 +2,7 @@ const addBookBtn = document.getElementById('add-book-btn');
 const booksWrapper = document.getElementById('books-wrapper');
 
 function Book(title, author, pages, isRead) {
-    if (!title || !author || !pages || isRead !== true && isRead !== false ) {
+    if (!title || !author || !pages || isRead !== true && isRead !== false) {
         throw Error('Missing required properties.');
     }
     this.title = title;
@@ -51,7 +51,7 @@ function displayBooks() {
         const bookPages = document.createElement('div');
         const bookIsRead = document.createElement('div');
 
-        
+
         booksWrapper.appendChild(card);
         card.appendChild(bookInfo);
         bookInfo.appendChild(bookTitle);
@@ -68,3 +68,11 @@ function displayBooks() {
     }
 }
 displayBooks()
+const dialogForm = document.getElementById('dialogForm');
+addBookBtn.addEventListener('click', () => {
+    dialogForm.showModal();
+})
+const closeButton = document.getElementById('close-button');
+closeButton.addEventListener('click', () => {
+    dialogForm.close();
+})
