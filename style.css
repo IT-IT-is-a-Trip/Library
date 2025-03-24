@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #e3afbc;
+    margin: 0;
+    padding: 0;
+}
+/* #e3e2df */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#header {
+    color: #e3e2df;
+    height: 13vh;
+    width: 100vw;
+    background-color: #9a1750;
+    text-align: center;
+    font-size: 6em;
+    box-shadow: 3px 3px 3px 3px #9a1750;
+}
+#books-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5,auto);
+    gap: 2.2em;
+}
+.book-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #9a1750;
+    border: 2px solid black;
+    border-radius: 15px 15px 0 0;
+    width: 17vw;
+    height: 12vh;
+    flex: 1;
+    border-bottom: 0;
+    text-shadow: 1px 1px 1px#e3e2df;
+}
+.book-info>div {
+    text-align: center;
+    width: 95%;
+    height: 25%;
+    font-weight: 600;
+    color: #e3e2df;
+}
+.card-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    background: linear-gradient(#9a1750, #5f001e);
+    border: 2px solid black;
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+    padding-bottom: 15px;
+}
+.card-buttons>button {
+    height: 2em;
+    width: 9em;
+    border-radius: 5px;
+    color: #5d001e;
+    font-weight: 900;
+    border:1px solid #e3e2df;
+}
+.rm-btn {
+    background-color: #e3e2df;
+}
+/* #5d001e */
+#add-book-container {
+    padding: 1em;
+}
+#add-book-btn {
+    width: 9vw;
+    height: 5vh;
+    font-size: 1.3em;
+    border-radius: 12px;
+    color: #5d001e;
+    font-weight: 900;
+    border: 3px solid #e3e2df;
+}

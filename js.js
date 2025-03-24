@@ -46,9 +46,12 @@ function displayBooks() {
     for (let b of library) {
         const card = document.createElement('div');
         const bookInfo = document.createElement('div');
+        bookInfo.setAttribute('class', 'book-info');
         const cardButtons = document.createElement('div');
+        cardButtons.setAttribute('class', 'card-buttons')
         const isReadButton = document.createElement('button');
         const removeButton = document.createElement('button');
+        removeButton.setAttribute('class', 'rm-btn');
 
         const bookTitle = document.createElement('div');
         const bookAuthor = document.createElement('div');
@@ -59,7 +62,8 @@ function displayBooks() {
         isReadButton.addEventListener('click', () => {
             b.isReadChange();
             isReadButton.textContent = b.isRead ? "Read" : "Not read yet";
-            isReadButton.style.background = b.isRead ? 'green' : 'red';
+            isReadButton.style.background = b.isRead ? 'rgb(135, 204, 135)' : '#5d001e'
+            isReadButton.style.color = b.isRead ? '#5d001e' : '#e3e2df';
         })
         booksWrapper.appendChild(card);
         card.appendChild(bookInfo);
@@ -71,9 +75,10 @@ function displayBooks() {
         cardButtons.appendChild(removeButton);
         bookTitle.textContent = b.title;
         bookAuthor.textContent = b.author;
-        bookPages.textContent = b.pages;
+        bookPages.textContent = b.pages + ' pages';
         isReadButton.textContent = b.isRead ? 'Read' : "Not read yet";
-        isReadButton.style.background = b.isRead ? 'green' : 'red';
+        isReadButton.style.background = b.isRead ? 'rgb(135, 204, 135)' : '#5d001e';
+        isReadButton.style.color = b.isRead ? '#5d001e' : '#e3e2df';
 
         isReadButton.setAttribute('class', 'isReadButton');
 
@@ -111,7 +116,6 @@ bookForm.addEventListener('submit', (e) => {
 
     const bookToAdd = new Book(newBook.title, newBook.author, newBook.pages, newBook.isRead);
     library.push(bookToAdd);
-    saveLibrary()
     displayBooks();
     bookForm.reset();
     dialogForm.close();
