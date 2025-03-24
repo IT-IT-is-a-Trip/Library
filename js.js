@@ -45,27 +45,37 @@ function displayBooks() {
         const cardButtons = document.createElement('div');
         const isReadButton = document.createElement('button');
         const removeButton = document.createElement('button');
-        
+
         const bookTitle = document.createElement('div');
         const bookAuthor = document.createElement('div');
         const bookPages = document.createElement('div');
-        const bookIsRead = document.createElement('div');
 
-        
-        
+        const isReadButtons = document.querySelectorAll('.isReadButton');
+
+        Book.prototype.isReadChange = function () {
+            this.isRead = !this.isRead;
+        };
+        isReadButton.addEventListener('click', () => {
+            b.isReadChange();
+            isReadButton.textContent = b.isRead ? "Read" : "Not read yet";
+            isReadButton.style.background = b.isRead ? 'green' : 'red';
+        })
         booksWrapper.appendChild(card);
         card.appendChild(bookInfo);
         bookInfo.appendChild(bookTitle);
         bookInfo.appendChild(bookAuthor);
         bookInfo.appendChild(bookPages);
-        bookInfo.appendChild(bookIsRead);
         card.appendChild(cardButtons);
         cardButtons.appendChild(isReadButton);
         cardButtons.appendChild(removeButton);
         bookTitle.textContent = b.title;
         bookAuthor.textContent = b.author;
         bookPages.textContent = b.pages;
-        bookIsRead.textContent = b.isRead;
+        isReadButton.textContent = b.isRead ? 'Read' : "Not read yet";
+        isReadButton.style.background = b.isRead ? 'green' : 'red';
+
+        isReadButton.setAttribute('class', 'isReadButton');
+
         card.setAttribute('class', 'card');
         b.id = crypto.randomUUID();
         card.setAttribute('data-id', b.id);
