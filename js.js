@@ -3,23 +3,34 @@ const library = [];
 const addBookBtn = document.getElementById('add-book-btn');
 const booksWrapper = document.getElementById('books-wrapper');
 
-function Book(title, author, pages, isRead) {
-    if (!title || !author || !pages || isRead !== true && isRead !== false) {
-        throw Error('Missing required properties.');
-    }
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-    this.id = crypto.randomUUID();
-    this.info = () => {
-        if (isRead) {
-            console.log(title + ' ' + author + ' ' + pages + " " + 'Already read')
-        } else {
-            console.log(title + ' by ' + author + ' ' + pages + " " + 'not read yet')
+class Book {
+    #id;
+    constructor(title, author, pages, isRead) {
+        if (!title || !author || !pages || isRead !== true && isRead !== false) {
+            throw Error('Missing required properties.');
+        }
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+        this.#id = crypto.randomUUID();
+        this.info = () => {
+            if (isRead) {
+                console.log(title + ' ' + author + ' ' + pages + " " + 'Already read')
+            } else {
+                console.log(title + ' by ' + author + ' ' + pages + " " + 'not read yet')
+            }
         }
     }
+    get id() {
+        return this.#id
+    }
+    toggleReadStatus() {
+            this.isRead = !this.isRead;
+    }
 }
+
+
 const book1 = new Book('Requiem for a dream', 'Hubert Selby Jr', 320, true);
 const book2 = new Book('Fight club', 'chuck palahniuk', 256, true);
 const book3 = new Book('The Call of Cthulhu', 'Howard Phillips "H. P." Lovecraft', 640, false)
@@ -38,9 +49,6 @@ library.push(book1);
 library.push(book2);
 library.push(book3);
 
-Book.prototype.isReadChange = function () {
-    this.isRead = !this.isRead;
-};
 function displayBooks() {
     booksWrapper.innerText = '';
     for (let b of library) {
@@ -60,7 +68,7 @@ function displayBooks() {
         const isReadButtons = document.querySelectorAll('.isReadButton');
 
         isReadButton.addEventListener('click', () => {
-            b.isReadChange();
+            b.toggleReadStatus();
             isReadButton.textContent = b.isRead ? "Read" : "Not read yet";
             isReadButton.style.background = b.isRead ? 'rgb(135, 204, 135)' : '#5d001e'
             isReadButton.style.color = b.isRead ? '#5d001e' : '#e3e2df';

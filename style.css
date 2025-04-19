@@ -49,8 +49,10 @@ body {
     color: #e3e2df;
 }
 .card-buttons {
+    width: 17vw;
     display: flex;
     justify-content: space-evenly;
+    flex: 1;
     background: linear-gradient(#9a1750, #5f001e);
     border: 2px solid black;
     border-top: 0;
@@ -80,4 +82,42 @@ body {
     color: #5d001e;
     font-weight: 900;
     border: 3px solid #e3e2df;
+}
+
+
+#dialogForm{
+    background-color: #9a1750;
+    border-radius: 15px;
+    width: 13vw;
+}
+#book-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+#book-info-section input {
+    color: #5d001e;
+    font-weight: 900;
+    border-radius: 5px;
+}
+#book-info-section label {
+    font-weight: 800;
+    padding-top: 5px;
+    color: #e3e2df;
+}
+#is-read {
+    font-weight: 800;
+    color: #e3e2df;
+
+}
+#close-button,
+#submit-button {
+    border-radius: 5px;
+    color: #e3e2df;
+    background-color: #5d001e;
+    font-weight: 900;
+}
+#form-buttons {
+    display: flex;
+    justify-content: space-between;
 }

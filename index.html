@@ -15,7 +15,7 @@
     </main>
     <dialog id="dialogForm">
         <form id="book-form" method="dialog">
-            <section>
+            <section id="book-info-section">
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title">
                 <label for="author">Author:</label>
@@ -24,11 +24,13 @@
                 <input type="text" id="pages" name="pages">
             </section>
             <p class="is-read-panel">
-                <label for="isRead">Is read?</label>
+                <label id="is-read" for="isRead">Is read?</label>
                 <input type="checkbox" id="isRead" name="isRead">
+            </p>
+            <p id="form-buttons">
+                <button id="submit-button" type="submit">Add to Library</button>
                 <button id="close-button" type="button">Close</button>
             </p>
-            <button id="submit-button" type="submit">Add to Library</button>
         </form>
     </dialog>
 </body>
